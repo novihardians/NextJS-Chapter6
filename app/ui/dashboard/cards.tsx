@@ -13,9 +13,12 @@ const iconMap = {
   invoices: InboxIcon,
 };
 
-/* We hide these codes :)
+import { fetchCardData } from '@/app/lib/data';
 
+// But in materi 9, we use this syntax */
 export default async function CardWrapper() {
+  const { totalPaidInvoices, totalPendingInvoices, numberOfInvoices, numberOfCustomers } = await fetchCardData();
+
   return (
     <>
 
@@ -30,8 +33,8 @@ export default async function CardWrapper() {
     </>
   );
 }
-*/
 
+// But in materi 9, we dont use this syntax */
 export function Card({
   title,
   value,

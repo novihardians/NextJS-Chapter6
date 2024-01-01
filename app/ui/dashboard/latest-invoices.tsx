@@ -2,6 +2,9 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
+
+// Adding materi 9 to remove LatestInvoice from definitions.tsx // add to fetchLatestInvoices  from data.tsx
+// But i dont want to do for my lesson :)
 import { LatestInvoice } from '@/app/lib/definitions';
 
 export default async function LatestInvoices({
