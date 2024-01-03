@@ -6,19 +6,19 @@ import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 import { lusitana } from '@/app/ui/fonts';
 
-// Adding materi 9 to remove fetchRevenue, fetchCardData // Adding materi 9 to add Suspense, RevenueChartSkeleton
-import { /* fetchRevenue, */ fetchLatestInvoices /*, fetchCardData */ } from '@/app/lib/data'; // Materi adding 7
+// Adding materi 9 to remove fetchRevenue, fetchLatestInvoices, fetchCardData // Adding materi 9 to add Suspense
+// import { fetchRevenue, fetchLatestInvoices, fetchCardData } from '@/app/lib/data'; // Materi adding 7
+
 import { Suspense } from 'react';
-import { RevenueChartSkeleton, CardsSkeleton } from '@/app/ui/skeletons';
+import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton } from '@/app/ui/skeletons'; // Adding materi 9
 
 export const dynamic = "force-dynamic"; // Materi adding 7.5 (Special) // for updating data works !!
 
 export default async function Page() {
   
   // const revenue = await fetchRevenue(); // Adding materi 9 to remove fetchRevenue
-  const latestInvoices = await fetchLatestInvoices();
+  // const latestInvoices = await fetchLatestInvoices(); // Adding materi 9 to remove fetchRevenue
   // const { totalPaidInvoices, totalPendingInvoices, numberOfInvoices, numberOfCustomers } = await fetchCardData();
-  
 
   return (
     <main>
@@ -51,7 +51,9 @@ export default async function Page() {
           <RevenueChart />
         </Suspense>
 
-        <LatestInvoices latestInvoices={latestInvoices} />
+        <Suspense fallback={<LatestInvoicesSkeleton />}>
+          <LatestInvoices />
+        </Suspense>
       </div>
     </main>
   );

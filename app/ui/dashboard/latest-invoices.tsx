@@ -4,14 +4,11 @@ import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
 
 // Adding materi 9 to remove LatestInvoice from definitions.tsx // add to fetchLatestInvoices  from data.tsx
-// But i dont want to do for my lesson :)
-import { LatestInvoice } from '@/app/lib/definitions';
+import { fetchLatestInvoices } from '@/app/lib/data';
 
-export default async function LatestInvoices({
-  latestInvoices,
-}: {
-  latestInvoices: LatestInvoice[];
-}) {
+export default async function LatestInvoices() { // Adding materi 9 to Remove props
+  const latestInvoices = await fetchLatestInvoices();
+
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
